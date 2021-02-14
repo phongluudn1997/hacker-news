@@ -1,7 +1,12 @@
 import React from "react";
+import { AppProviders } from "context";
 
 function App() {
-  return <div className="text-xl">Hello World 123</div>;
+  return (
+    <AppProviders>
+      <h1 className="text-lg font-bold">Hello World</h1>
+    </AppProviders>
+  );
 }
 
 export default App;
