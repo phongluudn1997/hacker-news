@@ -1,8 +1,9 @@
 import React from "react";
 import { AppProviders } from "context";
-import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
+import { Link, Redirect, Route, Switch, useRouteMatch } from "react-router-dom";
 import { TopStories } from "screens/top-stories";
 import { NewStories } from "screens/new-stories";
+import styles from "./styles.module.scss";
 
 function App() {
   return (
@@ -16,23 +17,33 @@ function App() {
 }
 
 function Container({ children }: any) {
-  return <div className="container mx-auto">{children}</div>;
+  return <div className="mx-auto max-w-5xl">{children}</div>;
 }
 
 function NavLink(props: any) {
   const match = useRouteMatch(props.to);
-  const matchClass = "bg-gray-50 border-b-2";
+  const matchClass = "font-bold text-primary-500";
   return (
     <Link
       {...props}
-      className={`p-2 hover:text-indigo-500  ${match ? matchClass : null}`}
+      className={`p-2 text-lg hover:text-primary-500 transition ease-in-out duration-100 ${
+        match && matchClass
+      }`}
     />
   );
 }
 
 function Nav() {
   return (
-    <nav>
+    <nav className="flex justify-between items-center bg-white h-16">
+      <Link to="/">
+        <img
+          className="h-14 w-14"
+          src="https://cdn.iconscout.com/icon/free/png-512/hacker-news-2-569388.png"
+          alt="Logo"
+        />
+      </Link>
+
       <ul className="flex gap-4">
         <li>
           <NavLink to="/top-stories">Top Stories</NavLink>
@@ -41,6 +52,12 @@ function Nav() {
           <NavLink to="/new-stories">New Stories</NavLink>
         </li>
       </ul>
+
+      <img
+        className="w-10 h-10 rounded-full"
+        src="https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/032/medium/oapgW_Fp_400x400.jpg"
+        alt=""
+      />
     </nav>
   );
 }
@@ -48,6 +65,9 @@ function Nav() {
 function AppRoutes() {
   return (
     <Switch>
+      <Route exact path="/">
+        <Redirect to="/top-stories" />
+      </Route>
       <Route path="/top-stories">
         <TopStories />
       </Route>

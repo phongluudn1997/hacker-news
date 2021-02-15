@@ -8,14 +8,17 @@ function TopStories() {
   if (isLoading) return <div>Loading...</div>;
 
   return (
-    <div>
+    <div className="flex flex-col gap-2">
       {topStories
         .filter((_: string, index: number) => index < itemCount)
         .map((id: string, index: number) => (
           <ItemRow key={id} id={id} />
         ))}
-      <button onClick={() => setItemCounts((old) => old + 10)}>
-        Load more
+      <button
+        className="p-2 bg-primary-400 font-medium rounded hover:bg-primary-500 transition ease-in-out duration-100"
+        onClick={() => setItemCounts((old) => old + 10)}
+      >
+        Load more...
       </button>
     </div>
   );
