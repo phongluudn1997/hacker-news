@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useTopStories } from "utils/stories";
 import { ListItems } from "components/list-items";
-import { LoadMoreButton } from "components/load-button";
+import { LoadMoreButton } from "components/lib";
 
 function TopStories() {
   const { data: topStories, isLoading, isError } = useTopStories();

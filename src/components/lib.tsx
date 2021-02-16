@@ -1,3 +1,12 @@
+function ErrorMessage({ error }: any) {
+  return (
+    <div>
+      <span>There was an error:</span>
+      <pre>{error.message}</pre>
+    </div>
+  );
+}
+
 function LoadMoreButton(props: any) {
   return (
     <button
@@ -9,4 +18,4 @@ function LoadMoreButton(props: any) {
   );
 }
 
-export { LoadMoreButton };
+export { ErrorMessage, LoadMoreButton };

@@ -3,15 +3,22 @@ import { AppProviders } from "context";
 import { Link, Redirect, Route, Switch, useRouteMatch } from "react-router-dom";
 import { TopStories } from "screens/top-stories";
 import { NewStories } from "screens/new-stories";
-import styles from "./styles.module.scss";
+import { ErrorMessage } from "components/lib";
+import { ErrorBoundary } from "react-error-boundary";
+
+function ErrorFallback({ error }: any) {
+  return <ErrorMessage error={error} />;
+}
 
 function App() {
   return (
     <AppProviders>
-      <Container>
-        <Nav />
-        <AppRoutes />
-      </Container>
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <Container>
+          <Nav />
+          <AppRoutes />
+        </Container>
+      </ErrorBoundary>
     </AppProviders>
   );
 }
