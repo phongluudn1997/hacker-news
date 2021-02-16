@@ -4,7 +4,7 @@ import { ListItems } from "components/list-items";
 import { LoadMoreButton } from "components/lib";
 
 function NewStories() {
-  const { data: newStories, isLoading, isError } = useNewStories();
+  const { data: newStories, isLoading } = useNewStories();
   const [itemCount, setItemCounts] = React.useState(10);
 
   if (isLoading) return <div>Loading...</div>;
