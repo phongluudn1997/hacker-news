@@ -8,4 +8,11 @@ function useTopStories() {
   });
 }
 
-export { useTopStories };
+function useNewStories() {
+  return useQuery({
+    queryKey: "new-stories",
+    queryFn: () => client("newstories.json"),
+  });
+}
+
+export { useTopStories, useNewStories };
